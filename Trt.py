@@ -25,7 +25,7 @@ except Exception as e:
 proxies=open('proxies.txt','r').read().splitlines()
 
 
-android_models=[]
+android_models=[] 
 try: 
 	xx = requests.get('HASHIMALEE/TRT/blob/main/Trt.py').text.splitlines()
 	for line in xx:
